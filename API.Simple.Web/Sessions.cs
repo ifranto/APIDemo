@@ -19,24 +19,60 @@ namespace API.Simple.Web
         }
 
 
-        public List<Session> Output {get;set;}
+        public List<Session> Output { get; set; }
     }
 
     [UriTemplate("/sessions/{id}")]
-    public class SingleSession : IGet, IOutput<Session>, IInput<SessionIDInput>
+    public class SingleSession : IGet, IOutput<Session>
     {
         public Status Get()
         {
-            Output = SessionRepository.Single(Input.id);
+            Output = SessionRepository.Single(id);
             return Status.OK;
         }
 
-        public Session Output {get;set;}
-        public SessionIDInput Input { get; set; }        
+        public Session Output { get; set; }
+        public int id { get; set; }
     }
 
-    public class SessionIDInput
+    [UriTemplate("/sessions")]
+    public class PostSession : IPost, IInput<Session>
     {
+        public Status Post()
+        {
+            SessionRepository.Add(Input);
+            return Status.Created;
+        }
+
+        public Session Input { get; set; }
+    }
+
+    [UriTemplate("/sessions/{id}")]
+    public class PutSession : IPut, IInput<Session>
+    {
+        public Status Put()
+        {
+            Session item = SessionRepository.Single(id);
+            item.Name = Input.Name;
+            item.Room = Input.Room;
+            item.Speaker = Input.Speaker;
+            SessionRepository.Update(item);
+            return Status.OK;
+        }
+
+        public int id { get; set; }
+        public Session Input { get; set; }
+    }
+
+    [UriTemplate("/sessions/{id}")]
+    public class DeleteSession : IDelete
+    {
+        public Status Delete()
+        {
+            SessionRepository.Delete(id);
+            return Status.NoContent;
+        }
+
         public int id { get; set; }
     }
 }
