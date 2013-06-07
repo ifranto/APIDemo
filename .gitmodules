@@ -1,0 +1,3 @@
+[submodule "openrasta"]
+	path = openrasta
+	url = https://github.com/openrasta/openrasta-hosting-aspnet.git
