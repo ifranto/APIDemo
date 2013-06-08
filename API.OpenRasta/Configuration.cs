@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using OpenRasta.Configuration;
+using OpenRasta.Codecs;
+using OpenRasta.Web;
 
 namespace API.OpenRasta
 {
@@ -16,8 +18,7 @@ namespace API.OpenRasta
                     .AtUri("/sessions")
                     .And.AtUri("/sessions/{id}")
                     .HandledBy<SessionHandler>()
-                    .AsJsonDataContract()
-                    .And.AsXmlDataContract();
+                    .TranscodedBy(typeof(JsonDataContractCodec)).ForMediaType(MediaType.Json).ForExtension("");
             }
         }
     }
