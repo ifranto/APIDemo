@@ -42,14 +42,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="OpenRasta, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libraries\OpenRasta.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenRasta.Hosting.AspNet, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libraries\OpenRasta.Hosting.AspNet.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -69,8 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
-    <Content Include="Libraries\OpenRasta.dll" />
-    <Content Include="Libraries\OpenRasta.Hosting.AspNet.dll" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -99,6 +89,14 @@
     <ProjectReference Include="..\API.Data\API.Data.csproj">
       <Project>{46a1c940-9687-4074-a5b8-e283fe6ff979}</Project>
       <Name>API.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\openrastacore\src\OpenRasta\OpenRasta.csproj">
+      <Project>{c3ed9cce-a140-4d0f-ae00-fbbf4cd27647}</Project>
+      <Name>OpenRasta</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\openrasta\src\OpenRasta.Hosting.AspNet\OpenRasta.Hosting.AspNet.csproj">
+      <Project>{fe290bb8-9cb4-454e-89be-e047674bb34f}</Project>
+      <Name>OpenRasta.Hosting.AspNet</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
